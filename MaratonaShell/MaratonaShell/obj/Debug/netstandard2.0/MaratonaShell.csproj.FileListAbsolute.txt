@@ -1,0 +1,16 @@
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\bin\Debug\netstandard2.0\MaratonaShell.deps.json
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\bin\Debug\netstandard2.0\MaratonaShell.dll
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\bin\Debug\netstandard2.0\MaratonaShell.pdb
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.csproj.AssemblyReference.cache
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.AssemblyInfoInputs.cache
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.AssemblyInfo.cs
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.csproj.CoreCompileInputs.cache
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.dll
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\refint\MaratonaShell.dll
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\MaratonaShell.pdb
+C:\Users\thali\source\repos\MaratonaShellSolucao\MaratonaShell\MaratonaShell\obj\Debug\netstandard2.0\ref\MaratonaShell.dll

@@ -1,0 +1,1 @@
+Este é um repositório baseado nas lives do canal Monkey Nights para aprender mais Sobre Shell
