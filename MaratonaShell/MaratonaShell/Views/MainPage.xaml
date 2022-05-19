@@ -1,24 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MaratonaShell.MainPage">
+<ContentPage
+    x:Class="MaratonaShell.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+    <Grid ColumnSpacing="10" RowSpacing="50">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            BorderColor="Blue"
+            CornerRadius="20">
+
+            <Entry
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Transparent"
+                HorizontalTextAlignment="Start"
+                Keyboard="Text"
+                Placeholder="Escreva seu texto"
+                PlaceholderColor="Gray"
+                TextColor="Black"
+                VerticalTextAlignment="Start" />
         </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+        <Button
+            Grid.Row="2"
+            Grid.ColumnSpan="1"
+            Padding="0"
+            BackgroundColor="Red"
+            CornerRadius="30"
+            Text="Salvar" />
+    </Grid>
 
 </ContentPage>
