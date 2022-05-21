@@ -3,11 +3,18 @@
     x:Class="MaratonaShell.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="MainPage">
+    xmlns:models="clr-namespace:MaratonaShell.Models"
+    xmlns:viewmodels="clr-namespace:MaratonaShell.ViewModels"
+    Title="MainPage"
+    x:DataType="viewmodels:MainPageViewModel">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel />
+    </ContentPage.BindingContext>
 
     <Grid ColumnSpacing="10" RowSpacing="50">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
             <RowDefinition Height="0.5*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -15,32 +22,72 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Frame
             Grid.RowSpan="2"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
+            BackgroundColor="AliceBlue"
             BorderColor="Blue"
             CornerRadius="20">
 
             <Entry
                 Grid.RowSpan="2"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 BackgroundColor="Transparent"
                 HorizontalTextAlignment="Start"
                 Keyboard="Text"
                 Placeholder="Escreva seu texto"
                 PlaceholderColor="Gray"
+                Text="{Binding Entrada}"
                 TextColor="Black"
-                VerticalTextAlignment="Start" />
+                VerticalTextAlignment="Start"
+                Visual="Material" />
         </Frame>
         <Button
             Grid.Row="2"
             Grid.ColumnSpan="1"
             Padding="0"
-            BackgroundColor="Red"
+            BackgroundColor="LightBlue"
+            Command="{Binding AdicionaNotaCommand}"
             CornerRadius="30"
             Text="Salvar" />
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="1"
+            Padding="0"
+            BackgroundColor="Red"
+            Command="{Binding ExcluiTodasCommand}"
+            CornerRadius="30"
+            Text="Apagar Todas" />
+
+        <Button
+            Grid.Row="2"
+            Grid.Column="2"
+            Padding="0"
+            BackgroundColor="Crimson"
+            CornerRadius="30"
+            Text="Apagar Ultimo" />
+
+        <ListView
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            ItemsSource="{Binding notas}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:NoteModel">
+                    <TextCell
+                        Detail="{Binding Hora}"
+                        DetailColor="DarkGray"
+                        Text="{Binding Texto}"
+                        TextColor="Black" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
     </Grid>
 
 </ContentPage>

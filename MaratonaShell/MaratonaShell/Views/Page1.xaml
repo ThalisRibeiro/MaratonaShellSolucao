@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MaratonaShell.Views.Page1"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Pagina 1">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                Text="Esta é a pagina 1"
+                TextColor="Black"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
