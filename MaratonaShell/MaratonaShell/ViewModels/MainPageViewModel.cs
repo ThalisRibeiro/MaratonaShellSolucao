@@ -41,7 +41,7 @@ namespace MaratonaShell.ViewModels
         void NovaNota()
         {
             //listaNotas.Add(new NoteModel(Entrada));
-            notas.Add(new NoteModel(entrada));
+            notas.Add(new NoteModel(entrada,DateTime.Now));
             Entrada = string.Empty;
         }
         private void ExcluiTodas()
