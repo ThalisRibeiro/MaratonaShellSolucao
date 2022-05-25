@@ -18,5 +18,9 @@ namespace MaratonaShell.Models
             Texto = texto;
             Hora = hora;
         }
+        public NoteModel()
+        {
+
+        }
     }
 }

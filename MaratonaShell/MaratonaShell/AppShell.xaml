@@ -1,7 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Shell xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:maratonashell="clr-namespace:MaratonaShell"
-       x:Class="MaratonaShell.AppShell">
-    <maratonashell:MainPage />
+<Shell
+    x:Class="MaratonaShell.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maratonashell="clr-namespace:MaratonaShell"
+    xmlns:maratonashell1="clr-namespace:MaratonaShell.Views">
+
+    <TabBar>
+        <Tab>
+            <maratonashell:MainPage />
+            <maratonashell1:Page1 />
+        </Tab>
+    </TabBar>
+
 
 </Shell>
