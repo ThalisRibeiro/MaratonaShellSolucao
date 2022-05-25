@@ -15,17 +15,21 @@ namespace MaratonaShell.ViewModels
         {
             AdicionaNotaCommand = new Command(NovaNota);
             ExcluiTodasCommand = new Command(ExcluiTodas);
+            CarregaJsonComand = new Command(CarregaJson);
+
             notas = new ObservableRangeCollection<NoteModel>();
             bD = new JsonBD();
+            CarregaJson();
+
         }
 
         //commands 
         public ICommand ExcluiTodasCommand { get; }
         public ICommand AdicionaNotaCommand { get; }
-
+        public ICommand CarregaJsonComand { get; }
 
         private JsonBD bD;
-        public ObservableRangeCollection<NoteModel> notas { get; }
+        public ObservableRangeCollection<NoteModel> notas { get; private set; }
 
         string entrada;
         public string Entrada
@@ -46,6 +50,14 @@ namespace MaratonaShell.ViewModels
         private void ExcluiTodas()
         {
             notas.Clear();
+        }
+        void CarregaJson()
+        {
+            var teste = new ObservableRangeCollection<NoteModel>();
+            teste = bD.Deserializador();
+            if (teste == null)
+                return;
+            notas = teste;
         }
 
     }
