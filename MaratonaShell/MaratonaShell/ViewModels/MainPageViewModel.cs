@@ -5,6 +5,7 @@ using System.Text;
 using MvvmHelpers;
 using System.Windows.Input;
 using MvvmHelpers.Commands;
+using MaratonaShell.Services;
 
 namespace MaratonaShell.ViewModels
 {
@@ -15,7 +16,7 @@ namespace MaratonaShell.ViewModels
             AdicionaNotaCommand = new Command(NovaNota);
             ExcluiTodasCommand = new Command(ExcluiTodas);
             notas = new ObservableRangeCollection<NoteModel>();
-            //listaNotas = new ObservableRangeCollection<Grouping<string, NoteModel>>();
+            bD = new JsonBD();
         }
 
         //commands 
@@ -23,9 +24,7 @@ namespace MaratonaShell.ViewModels
         public ICommand AdicionaNotaCommand { get; }
 
 
-        //public List<NoteModel> listaNotas = new List<NoteModel>();
-        //public ObservableRangeCollection<Grouping<string,NoteModel>> listaNotas { get; }
-
+        private JsonBD bD;
         public ObservableRangeCollection<NoteModel> notas { get; }
 
         string entrada;
@@ -40,9 +39,9 @@ namespace MaratonaShell.ViewModels
 
         void NovaNota()
         {
-            //listaNotas.Add(new NoteModel(Entrada));
             notas.Add(new NoteModel(entrada,DateTime.Now));
             Entrada = string.Empty;
+            bD.Serializador(notas);
         }
         private void ExcluiTodas()
         {
