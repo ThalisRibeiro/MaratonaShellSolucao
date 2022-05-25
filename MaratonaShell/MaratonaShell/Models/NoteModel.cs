@@ -5,21 +5,18 @@ namespace MaratonaShell.Models
 {
     public class NoteModel
     {
-        string texto;
-        DateTime hora;
-        public string Texto
-        {
-            get { return texto; }
-        }
-        public string Hora
-        {
-            get { return hora.ToString(); }
-        }
+        public string Texto { get; set; }
+        public DateTime Hora{get; set;}
 
         public NoteModel(string textoRecebido)
         {
-            hora = DateTime.Now;
-            texto = textoRecebido;
+            Hora = DateTime.Now;
+            Texto = textoRecebido;
+        }
+        public NoteModel(string texto, DateTime hora)
+        {
+            Texto = texto;
+            Hora = hora;
         }
     }
 }
