@@ -23,9 +23,14 @@ namespace MaratonaShell.Services
         }
 
 
-        public void Deserializador()
+        public ObservableRangeCollection<NoteModel> Deserializador()
         {
-
+            if (!File.Exists(path))
+                return null;
+            string json = File.ReadAllText(path);
+            ObservableRangeCollection<NoteModel> colecao = new ObservableRangeCollection<NoteModel>();
+            colecao = JsonConvert.DeserializeObject<ObservableRangeCollection<NoteModel>>(json);
+            return colecao;
         }
     }
 }
