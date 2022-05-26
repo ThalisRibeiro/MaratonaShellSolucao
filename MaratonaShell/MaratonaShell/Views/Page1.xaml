@@ -3,15 +3,58 @@
     x:Class="MaratonaShell.Views.Page1"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Pagina 1">
+    xmlns:models="clr-namespace:MaratonaShell.Models"
+    xmlns:viewmodels="clr-namespace:MaratonaShell.ViewModels"
+    Title="Notas Salvas"
+    x:DataType="viewmodels:MainPageViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel />
+    </ContentPage.BindingContext>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label
-                FontSize="Large"
-                HorizontalOptions="CenterAndExpand"
-                Text="Esta é a pagina 1"
-                TextColor="Black"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
+        <RefreshView
+            Command="{Binding CarregaJsonComand}"
+            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            RefreshColor="blue">
+
+
+            <CollectionView ItemsSource="{Binding notas}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NoteModel">
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItem
+                                    x:DataType="viewmodels:MainPageViewModel"
+                                    BackgroundColor="red"
+                                    Command="{Binding ExcluiEscolhidaCommand}"
+                                    CommandParameter="{Binding .}"
+                                    IsDestructive="True"
+                                    Text="Delete" />
+                            </SwipeView.LeftItems>
+                            <Grid
+                                Grid.Column="2"
+                                BackgroundColor="LightGray"
+                                HeightRequest="30">
+                                <Label
+                                    x:DataType="models:NoteModel"
+                                    BackgroundColor="LightGray"
+                                    Text="{Binding Texto}"
+                                    TextColor="red" />
+                                <Label
+                                    Grid.Column="2"
+                                    x:DataType="models:NoteModel"
+                                    BackgroundColor="LightGray"
+                                    Text="{Binding Hora}"
+                                    TextColor="Gray" />
+                            </Grid>
+                        </SwipeView>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </RefreshView>
+
     </ContentPage.Content>
 </ContentPage>
