@@ -1,11 +1,13 @@
 ﻿using MaratonaShell.Models;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using MvvmHelpers;
 using System.Windows.Input;
 using MvvmHelpers.Commands;
 using MaratonaShell.Services;
+using System.Threading.Tasks;
 
 namespace MaratonaShell.ViewModels
 {
@@ -16,6 +18,7 @@ namespace MaratonaShell.ViewModels
             AdicionaNotaCommand = new Command(NovaNota);
             ExcluiTodasCommand = new Command(ExcluiTodas);
             CarregaJsonComand = new Command(CarregaJson);
+            ExcluiEscolhidaCommand = new Command<NoteModel>(ExcluiEscolhida);
 
             notas = new ObservableRangeCollection<NoteModel>();
             bD = new JsonBD();
@@ -27,6 +30,7 @@ namespace MaratonaShell.ViewModels
         public ICommand ExcluiTodasCommand { get; }
         public ICommand AdicionaNotaCommand { get; }
         public ICommand CarregaJsonComand { get; }
+        public ICommand ExcluiEscolhidaCommand { get; }
 
         private JsonBD bD;
         public ObservableRangeCollection<NoteModel> notas { get; private set; }
@@ -51,13 +55,38 @@ namespace MaratonaShell.ViewModels
         {
             notas.Clear();
         }
-        void CarregaJson()
+        void ExcluiEscolhida(NoteModel recebido)
         {
+
+            //var teste = notas.Where(x=>x.Hora == recebido.Hora);
+            if (notas.Contains(recebido)) 
+            notas.Remove(recebido);
+
+            bD.Serializador(notas);
             var teste = new ObservableRangeCollection<NoteModel>();
             teste = bD.Deserializador();
-            if (teste == null)
-                return;
-            notas = teste;
+            if (teste != null)
+            {
+                notas.Clear();
+                notas.AddRange(teste);
+                //notas = teste;
+            }
+
+            IsBusy = false;
+        }
+        void CarregaJson()
+        {
+            IsBusy = true;
+            var teste = new ObservableRangeCollection<NoteModel>();
+            teste = bD.Deserializador();
+            if (teste != null)
+            {
+                notas.Clear();
+                notas.AddRange(teste);
+                //notas = teste;
+            }
+
+            IsBusy = false;
         }
 
     }
