@@ -82,25 +82,27 @@
             CornerRadius="30"
             Text="Apagar Ultimo" />
 
-        <ListView
+        <RefreshView
             Grid.Row="3"
             Grid.RowSpan="2"
             Grid.ColumnSpan="3"
-            HasUnevenRows="True"
-            ItemsSource="{Binding notas}">
+            Command="{Binding CarregaJsonComand}"
+            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            RefreshColor="blue">
 
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:NoteModel">
-                    <TextCell
-                        Detail="{Binding Hora}"
-                        DetailColor="DarkGray"
-                        Text="{Binding Texto}"
-                        TextColor="Black" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            <ListView HasUnevenRows="True" ItemsSource="{Binding notas}">
 
-
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NoteModel">
+                        <TextCell
+                            Detail="{Binding Hora}"
+                            DetailColor="DarkGray"
+                            Text="{Binding Texto}"
+                            TextColor="Black" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </RefreshView>
     </Grid>
 
 </ContentPage>
