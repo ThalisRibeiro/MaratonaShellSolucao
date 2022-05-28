@@ -18,6 +18,7 @@ namespace MaratonaShell.ViewModels
             AdicionaNotaCommand = new Command(NovaNota);
             ExcluiTodasCommand = new Command(ExcluiTodas);
             CarregaJsonComand = new Command(CarregaJson);
+            CarregaJsonComand = new AsyncCommand(AsyncRefresh);
             ExcluiEscolhidaCommand = new Command<NoteModel>(ExcluiEscolhida);
 
             notas = new ObservableRangeCollection<NoteModel>();
@@ -55,9 +56,8 @@ namespace MaratonaShell.ViewModels
         {
             notas.Clear();
         }
-        void ExcluiEscolhida(NoteModel recebido)
+         void ExcluiEscolhida(NoteModel recebido)
         {
-
             //var teste = notas.Where(x=>x.Hora == recebido.Hora);
             if (notas.Contains(recebido)) 
             notas.Remove(recebido);
@@ -74,9 +74,18 @@ namespace MaratonaShell.ViewModels
 
             IsBusy = false;
         }
+
+        async Task AsyncRefresh()
+        {
+
+            IsBusy = true;
+            await Task.Delay(3000);
+            CarregaJson();
+            IsBusy = false;
+        }
+
         void CarregaJson()
         {
-            IsBusy = true;
             var teste = new ObservableRangeCollection<NoteModel>();
             teste = bD.Deserializador();
             if (teste != null)
@@ -85,8 +94,6 @@ namespace MaratonaShell.ViewModels
                 notas.AddRange(teste);
                 //notas = teste;
             }
-
-            IsBusy = false;
         }
 
     }
