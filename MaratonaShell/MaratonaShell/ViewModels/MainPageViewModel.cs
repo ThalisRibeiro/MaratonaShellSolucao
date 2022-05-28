@@ -13,6 +13,24 @@ namespace MaratonaShell.ViewModels
 {
     public class MainPageViewModel :BaseViewModel
     {
+
+        //commands 
+        public ICommand ExcluiTodasCommand { get; }
+        public ICommand AdicionaNotaCommand { get; }
+        public ICommand CarregaJsonComand { get; }
+        public ICommand ExcluiEscolhidaCommand { get; }
+
+        //Objetos 
+        private JsonBD bD;
+        public ObservableRangeCollection<NoteModel> notas { get; private set; }
+
+        string entrada;
+        public string Entrada
+        {
+            get => entrada;
+            set => SetProperty(ref entrada, value);
+        }
+
         public MainPageViewModel()
         {
             AdicionaNotaCommand = new Command(NovaNota);
@@ -27,21 +45,8 @@ namespace MaratonaShell.ViewModels
 
         }
 
-        //commands 
-        public ICommand ExcluiTodasCommand { get; }
-        public ICommand AdicionaNotaCommand { get; }
-        public ICommand CarregaJsonComand { get; }
-        public ICommand ExcluiEscolhidaCommand { get; }
 
-        private JsonBD bD;
-        public ObservableRangeCollection<NoteModel> notas { get; private set; }
 
-        string entrada;
-        public string Entrada
-        {
-            get=> entrada;
-            set => SetProperty(ref entrada, value);
-        }
 
 
         //metodos para ser usado pelos Icommand
