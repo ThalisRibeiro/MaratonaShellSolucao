@@ -62,39 +62,7 @@
             </ListView>
 
 
-            <!--<CollectionView ItemsSource="{Binding notas}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:NoteModel">
-                        <SwipeView>
-                            <SwipeView.LeftItems>
-                                <SwipeItem
-                                    BackgroundColor="red"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainPageViewModel}}, Path=ExcluiEscolhidaCommand}"
-                                    CommandParameter="{Binding .}"
-                                    IsDestructive="False"
-                                    Text="Delete" />
-                            </SwipeView.LeftItems>
-                            <Grid
-                                Grid.Row="2"
-                                BackgroundColor="LightGray"
-                                MinimumHeightRequest="25">
-                                <Label
-                                    x:DataType="models:NoteModel"
-                                    BackgroundColor="LightGray"
-                                    Text="{Binding Texto}"
-                                    TextColor="Black" />
-                                <Label
-                                    Grid.Row="2"
-                                    x:DataType="models:NoteModel"
-                                    BackgroundColor="LightGray"
-                                    Text="{Binding Hora}"
-                                    TextColor="Gray" />
-                            </Grid>
-                        </SwipeView>
-
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>-->
+            
 
         </RefreshView>
 
