@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:MaratonaShell.Models"
     xmlns:viewmodels="clr-namespace:MaratonaShell.ViewModels"
+    x:Name="PaginaDois"
     Title="Notas Salvas"
     x:DataType="viewmodels:MainPageViewModel">
 
@@ -25,24 +26,23 @@
                         <SwipeView>
                             <SwipeView.LeftItems>
                                 <SwipeItem
-                                    x:DataType="viewmodels:MainPageViewModel"
                                     BackgroundColor="red"
-                                    Command="{Binding ExcluiEscolhidaCommand}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainPageViewModel}}, Path=ExcluiEscolhidaCommand}"
                                     CommandParameter="{Binding .}"
-                                    IsDestructive="True"
+                                    IsDestructive="False"
                                     Text="Delete" />
                             </SwipeView.LeftItems>
                             <Grid
-                                Grid.Column="2"
+                                Grid.Row="2"
                                 BackgroundColor="LightGray"
-                                HeightRequest="30">
+                                MinimumHeightRequest="25">
                                 <Label
                                     x:DataType="models:NoteModel"
                                     BackgroundColor="LightGray"
                                     Text="{Binding Texto}"
-                                    TextColor="red" />
+                                    TextColor="Black" />
                                 <Label
-                                    Grid.Column="2"
+                                    Grid.Row="2"
                                     x:DataType="models:NoteModel"
                                     BackgroundColor="LightGray"
                                     Text="{Binding Hora}"
