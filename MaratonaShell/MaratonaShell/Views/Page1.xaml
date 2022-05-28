@@ -18,9 +18,51 @@
             Command="{Binding CarregaJsonComand}"
             IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
             RefreshColor="blue">
+            <ListView
+                x:Name="ListaNotas"
+                HasUnevenRows="True"
+                ItemsSource="{Binding notas}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NoteModel">
+
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Texto}" TextColor="Black" />
+                                <Label Text="{Binding Hora}" TextColor="Gray" />
+                                <Button
+                                    BackgroundColor="red"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainPageViewModel}}, Path=ExcluiEscolhidaCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Delete" />
+
+                            </StackLayout>
+
+                        </ViewCell>
 
 
-            <CollectionView ItemsSource="{Binding notas}">
+                        <!--<TextCell
+                            Detail="{Binding Hora}"
+                            DetailColor="DarkGray"
+                            Text="{Binding Texto}"
+                            TextColor="Black">
+
+
+                            <TextCell.ContextActions>
+                                <MenuItem
+                                    Command="{Binding Source={x:Reference Name=ListaNotas}, Path=BidingContext.ExcluiEscolhidaCommand}"
+                                    CommandParameter="{Binding .}"
+                                    IsDestructive="True"
+                                    Text="Apagar" />
+                            </TextCell.ContextActions>
+                        </TextCell>-->
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+            <!--<CollectionView ItemsSource="{Binding notas}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:NoteModel">
                         <SwipeView>
@@ -52,7 +94,7 @@
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>
+            </CollectionView>-->
 
         </RefreshView>
 
