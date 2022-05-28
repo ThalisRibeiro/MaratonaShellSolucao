@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:MaratonaShell.Models"
     xmlns:viewmodels="clr-namespace:MaratonaShell.ViewModels"
+    x:Name="PaginaInicial"
     Title="MainPage"
     x:DataType="viewmodels:MainPageViewModel">
     <ContentPage.BindingContext>
@@ -87,21 +88,38 @@
             Grid.RowSpan="2"
             Grid.ColumnSpan="3"
             Command="{Binding CarregaJsonComand}"
-            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
             RefreshColor="blue">
 
-            <ListView HasUnevenRows="True" ItemsSource="{Binding notas}">
-
-                <ListView.ItemTemplate>
+            <CollectionView ItemsSource="{Binding notas}">
+                <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:NoteModel">
-                        <TextCell
-                            Detail="{Binding Hora}"
-                            DetailColor="DarkGray"
-                            Text="{Binding Texto}"
-                            TextColor="Black" />
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItem
+                                    BackgroundColor="red"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainPageViewModel}}, Path=ExcluiEscolhidaCommand}"
+                                    CommandParameter="{Binding .}"
+                                    IsDestructive="False"
+                                    Text="Delete" />
+                            </SwipeView.LeftItems>
+                            <Grid BackgroundColor="LightGray" MinimumHeightRequest="5">
+                                <Label
+                                    BackgroundColor="LightGray"
+                                    FontSize="Large"
+                                    Text="{Binding Texto}"
+                                    TextColor="Black" />
+                                <Label
+                                    Grid.Row="2"
+                                    BackgroundColor="LightGray"
+                                    Text="{Binding Hora}"
+                                    TextColor="Gray" />
+                            </Grid>
+                        </SwipeView>
+
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </RefreshView>
     </Grid>
 
