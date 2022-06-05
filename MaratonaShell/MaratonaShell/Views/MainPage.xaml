@@ -103,6 +103,13 @@
                                     IsDestructive="False"
                                     Text="Delete" />
                             </SwipeView.LeftItems>
+                            <SwipeView.RightItems>
+                                <SwipeItem
+                                    BackgroundColor="Yellow"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainPageViewModel}}, Path=EditaNotaCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Editar" />
+                            </SwipeView.RightItems>
                             <Grid BackgroundColor="LightGray" MinimumHeightRequest="5">
                                 <Label
                                     BackgroundColor="LightGray"
