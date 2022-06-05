@@ -55,7 +55,7 @@ namespace MaratonaShell.ViewModels
 
         void EditaNota(NoteModel recebido)
         {
-            entrada = recebido.Texto;
+            Entrada = recebido.Texto;
             ExcluiEscolhida(recebido);
         }
         void NovaNota()
