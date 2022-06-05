@@ -19,6 +19,7 @@ namespace MaratonaShell.ViewModels
         public ICommand AdicionaNotaCommand { get; }
         public ICommand CarregaJsonComand { get; }
         public ICommand ExcluiEscolhidaCommand { get; }
+        public ICommand EditaNotaCommand { get; }
 
         //Objetos 
         private JsonBD bD;
@@ -38,6 +39,7 @@ namespace MaratonaShell.ViewModels
             CarregaJsonComand = new Command(CarregaJson);
             CarregaJsonComand = new AsyncCommand(AsyncRefresh);
             ExcluiEscolhidaCommand = new Command<NoteModel>(ExcluiEscolhida);
+            EditaNotaCommand = new Command<NoteModel>(EditaNota);
 
             notas = new ObservableRangeCollection<NoteModel>();
             bD = new JsonBD();
@@ -51,6 +53,11 @@ namespace MaratonaShell.ViewModels
 
         //metodos para ser usado pelos Icommand
 
+        void EditaNota(NoteModel recebido)
+        {
+            entrada = recebido.Texto;
+            ExcluiEscolhida(recebido);
+        }
         void NovaNota()
         {
             notas.Add(new NoteModel(entrada,DateTime.Now));
