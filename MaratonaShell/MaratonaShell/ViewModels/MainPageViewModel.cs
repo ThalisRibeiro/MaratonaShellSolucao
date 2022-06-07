@@ -60,7 +60,7 @@ namespace MaratonaShell.ViewModels
         }
         void NovaNota()
         {
-            notas.Add(new NoteModel(entrada,DateTime.Now));
+            notas.Insert(0,new NoteModel(entrada, DateTime.Now));
             Entrada = string.Empty;
             bD.Serializador(notas);
         }
